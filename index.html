@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox Server Joiner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background: #ff4747;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #e03e3e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Redirecting you to Roblox...</h1>
+  <a id="joinBtn" class="btn">Click here if it doesn't auto-join</a>
+
+  <script>
+    // Get the placeId & jobId from URL query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const placeId = urlParams.get("placeId");
+    const jobId = urlParams.get("gameInstanceId");
+
+    if (!placeId || !jobId) {
+      document.querySelector("h1").innerText = "Missing placeId or jobId!";
+    } else {
+      const robloxUrl = `roblox://placeId=${placeId}&gameInstanceId=${jobId}`;
+      const fallbackUrl = `https://www.roblox.com/games/start?placeId=${placeId}&gameInstanceId=${jobId}`;
+
+      // try auto-redirect
+      window.location.href = robloxUrl;
+
+      // clickable button fallback
+      const btn = document.getElementById("joinBtn");
+      btn.href = robloxUrl;
+
+      // also browser fallback after delay
+      setTimeout(() => {
+        btn.href = fallbackUrl;
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
