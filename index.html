@@ -35,20 +35,21 @@
       background: #e03e3e;
     }
     .logo {
-      width: 60px;      /* size of the logo */
-      opacity: 0.85;    /* slight transparency */
+      width: 80px;      /* optional: slightly bigger */
+      opacity: 0.85;
       transition: opacity 0.2s ease;
+      margin-bottom: 20px; /* space between logo and heading */
     }
     .logo:hover {
       opacity: 1;
     }
+
   </style>
 </head>
 <body>
+  <img class="logo" src="https://cdn.discordapp.com/icons/1408532343723130990/b1a3911220b040c46e3ed5afc8560dd6.png?size=100&quality=lossless" alt="Logo">
   <h1>Redirecting you to Roblox...</h1>
   <a id="joinBtn" class="btn">Click here if it doesn't auto-join</a>
-
-  <img class="logo" src="https://cdn.discordapp.com/icons/1408532343723130990/b1a3911220b040c46e3ed5afc8560dd6.png?size=100&quality=lossless" alt="Logo">
 
   <script>
     // Get the placeId & jobId from URL query params
